@@ -11,3 +11,6 @@ string decimalToBinary(int n)
     }
     return binary;
 }
+
+// x-bit binary representation of num
+cout << bitset<x>(num);
