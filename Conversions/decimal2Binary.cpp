@@ -1,3 +1,6 @@
+#include <iostream>
+#include <vector>
+using namespace std;
 // n is num
 string decimalToBinary(int n)
 {
