@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <bitset>
 using namespace std;
 // n is num
 string decimalToBinary(int n)
@@ -16,4 +17,8 @@ string decimalToBinary(int n)
 }
 
 // x-bit binary representation of num
-cout << bitset<x>(num);
+void func(int num)
+{
+    cout << bitset<32>(num);
+    cout << bitset<64>(num);
+}
