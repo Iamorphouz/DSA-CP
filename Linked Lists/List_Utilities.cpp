@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 using namespace std;
+
 class Node
 {
 private:
@@ -24,6 +25,8 @@ public:
     // Convert Array to Linked List
     static Node *convertArr2LL(vector<int> &arr)
     {
+        if (arr.size() == 0)
+            return NULL;
         Node *head = new Node(arr[0]);
         Node *curr = head;
         for (int i = 1; i < arr.size(); i++)
@@ -170,4 +173,97 @@ public:
         }
         return head;
     }
+    static Node *insertHead(Node *head, int val)
+    {
+        Node *temp = new Node(val, head);
+        head = temp;
+        return head;
+    }
+    static Node *insertTail(Node *head, int val)
+    {
+        if (head == NULL)
+            return new Node(val);
+        Node *temp = head;
+        while (temp->next != NULL)
+            temp = temp->next;
+        temp->next = new Node(val);
+        return head;
+    }
+    static Node *insertPosition(Node *head, int val, int k)
+    {
+        if (head == NULL)
+        {
+            if (k == 1)
+            {
+                return new Node(val);
+            }
+            else
+            {
+                return head;
+            }
+        }
+
+        if (k == 1)
+        {
+            return new Node(val, head);
+        }
+
+        Node *temp = head;
+        int cnt = 1;
+        while (temp != NULL)
+        {
+            if (cnt == k - 1)
+            {
+                Node *x = new Node(val, temp->next);
+                temp->next = x;
+                break;
+            }
+            temp = temp->next;
+            cnt++;
+        }
+        return head;
+    }
+
+    static Node *insertbeforeValue(Node *head, int val, int el)
+    {
+        if (head == NULL)
+        {
+            return head;
+        }
+
+        if (head->data == el)
+        {
+            return new Node(val, head);
+        }
+
+        Node *temp = head;
+        while (temp->next != NULL)
+        {
+            if (temp->next->data == el)
+            {
+                Node *x = new Node(val, temp->next);
+                temp->next = x;
+                break;
+            }
+            temp = temp->next;
+        }
+        return head;
+    }
 };
+
+#ifdef NO_COMMIT
+// This code won't be compiled or committed
+int main()
+{
+    vector<int> arr = {2, 4, 6, 8};
+    Node *head = Node::convertArr2LL(arr);
+    head = Node::deleteEl(head, 5);
+    // head = Node::insertHead(head, 100);
+    // head = Node::insertHead(head, 200);
+    // head = Node::insertHead(head, 300);
+    // head = Node::insertTail(head, 600);
+    // head = Node::insertPosition(head, 600, 6);
+    head = Node::insertbeforeValue(head, 600, 6);
+    Node::print(head);
+}
+#endif
