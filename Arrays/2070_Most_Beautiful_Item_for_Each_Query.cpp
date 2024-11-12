@@ -1,3 +1,4 @@
+// CPP
 class Solution
 {
 public:
@@ -44,3 +45,31 @@ public:
         return ans;
     }
 };
+
+// Python
+class Solution:
+    def maximumBeauty(self, items: List[List[int]], queries: List[int]) -> List[int]:
+        
+        maxi = float('inf')
+        res = [[0, 0, maxi]] # minprice, beauty, maxprice
+
+        items.sort(key = lambda x: x[0])
+
+        for price, beauty in items:
+            
+            if beauty > res[-1][1]:
+                if price == res[-1][0]:
+                    res[-1][1] = beauty
+                else:
+                    res[-1][2] = price
+                    res.append([price, beauty, maxi])
+
+        ans = []
+
+        for q in queries:
+            for i in range(len(res) - 1, -1, -1):
+                if res[i][0] <= q:
+                    ans.append(res[i][1])
+                    break
+        
+        return ans
