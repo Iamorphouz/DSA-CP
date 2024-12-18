@@ -307,6 +307,11 @@ void print14(int n)
 };
 void print15(int n)
 {
+    // ABCDE
+    // ABCD
+    // ABC
+    // AB
+    // A
     for (int i = 1; i <= n; i++)
     {
         for (char j = 'A'; j <= 'A' + (n - i); j++)
@@ -316,11 +321,96 @@ void print15(int n)
         cout << endl;
     }
 };
+void print16(int n)
+{
+    // A
+    // BB
+    // CCC
+    // DDDD
+    // EEEEE
+    for (int i = 1; i <= n; i++)
+    {
+        char ch = ('A' + i - 1);
+        for (int j = 1; j <= i; j++)
+        {
+            cout << ch;
+        }
+        cout << endl;
+    }
+}
+void print17(int n)
+{
+    //     A
+    //    ABA
+    //   ABCBA
+    //  ABCDCBA
+    // ABCDEDCBA
+    int space = n - 1;
+    for (int i = 1; i <= n; i++)
+    {
+        // space
+        for (int j = 1; j <= space; j++)
+        {
+            cout << " ";
+        }
+        // char
+        char ch = 'A';
+        for (int j = 1; j <= 2 * i - 1; j++)
+        {
+            cout << ch;
+            if (j < i)
+                ch++;
+            else
+                ch--;
+        }
+        // space
+        for (int j = 1; j <= space; j++)
+        {
+            cout << " ";
+        }
+        space--;
+        cout << endl;
+    }
+}
+void print18(int n)
+{
+    // E
+    // DE
+    // CDE
+    // BCDE
+    // ABCDE
+    for (int i = 1; i <= n; i++)
+    {
+        char ch = 'A' + n - i;
 
+        for (int j = 1; j <= i; j++)
+        {
+            cout << ch;
+            ch += 1;
+        }
+        cout << endl;
+    }
+}
+void print21(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            if (i == 1 || j == 1 || i == n || j == n)
+                cout << "*";
+            else
+                cout << " ";
+        }
+        cout << endl;
+    }
+}
 int main()
 {
     int n = 5;
     // cin >> n;
-    print15(n);
+
+    print21(n);
+
     return 0;
 }
