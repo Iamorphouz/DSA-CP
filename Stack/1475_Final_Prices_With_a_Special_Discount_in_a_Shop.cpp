@@ -1,7 +1,8 @@
 class Solution
 {
 public:
-    vector<int> finalPrices(vector<int> &prices)
+    // stack
+    vector<int> finalPrices_Stack(vector<int> &prices)
     {
         const int n = prices.size();
         int stack[500], top = 0;
@@ -16,5 +17,24 @@ public:
             stack[++top] = i;
         }
         return ans;
+    }
+    // loops
+    vector<int> finalPrices_Loops(vector<int> &prices)
+    {
+        int n = prices.size();
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                if (prices[j] <= prices[i])
+                {
+                    prices[i] -= prices[j];
+                    break;
+                }
+            }
+        }
+
+        return prices;
     }
 };
