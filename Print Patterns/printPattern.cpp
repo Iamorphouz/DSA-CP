@@ -405,6 +405,15 @@ void print21(int n)
         cout << endl;
     }
 }
+void print19(int n)
+{
+}
+void print20(int n)
+{
+}
+void print22(int n)
+{
+}
 int main()
 {
     int n = 5;
